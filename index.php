@@ -1,6 +1,6 @@
 <?php
 
-echo "check";
+echo "check<br>";
 /**
  * CodeIgniter
  *
