@@ -49,7 +49,7 @@
                     <div class="col-md-6"></div>
                     
                       <div class="col-md-6 ">
-                       <form action="login/check" method="post">
+                       <form action='<?php echo base_url();?>login/check' method="post">
                            <div class="login">
                            <label for="username">Username:</label><br>
                               <input type="text" name="username" required>
@@ -57,7 +57,9 @@
                            <div class="login right">
                            <label for="password">Password:</label><br>
                               <input type="password" name="password" >
-                            <input type="submit" class="btn btn-primary" value="Log in" name="button">
+                            <input type="submit" class="btn btn-primary" value="Log in" name="button"><br>
+                            <?php if(!empty($wrong)) echo $wrong;?>
+                           
                            </div>
                        </form>
                        </div>
@@ -71,24 +73,26 @@
         <div class="row">
              <div class="col-md-6"></div>
              <div class="col-md-6">
-             <form action="" method="post">
+             <form action="<?php echo base_url()?>login/insert" method="post">
                            
-                    <input class="placeholder" type="text" name="name" placeholder="Name" required>
+                    <input class="placeholder" type="text" name="Iname" placeholder="Name" required>
                          
-                    <input class="placeholder " type="text" name="username" placeholder="Username" required>
+                    <input class="placeholder " type="text" name="Iusername" placeholder="Username" required>
                          
-                    <input class="placeholder width" type="text" name="email" placeholder="Email" required>
+                    <input class="placeholder width" type="text" name="Iemail" placeholder="Email" required>
                          
-                    <input class="placeholder width" type="password" name="password" placeholder="New password" required>
+                    <input class="placeholder width" type="password" name="Ipassword" placeholder="New password" required>
                          
-                    <input class="placeholder" type="text" name="mobile" placeholder="Mobile">
+                    <input class="placeholder" type="text" name="Imobile" placeholder="Mobile">
 
-                    <input class="gendr" type="radio" name="gender" value="male" >
+                    <input class="gendr" type="radio" name="Igender" value="male" >
                         <label class="gender">Male</label>
 
-                    <input class="gendr" type="radio" name="gender" value="female" >
+                    <input class="gendr" type="radio" name="Igender" value="female" >
                     <label class="gender">Female</label>
-                    <input type="submit" class="btn btn-success signUp" value="Sign Up">              </div>
+                    <input type="submit" class="btn btn-success signUp" value="Sign Up">
+                    <?php if(!empty($right)) echo $right;?>        
+            </div>
         </div>
     </div>
   </div>

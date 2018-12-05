@@ -18,7 +18,8 @@
                         </ul>";?>
                         </div>
                         <div class="col-md-2">
-                             <a href="<?php echo base_url();?>login/update"><button class="btn btn-success">Update Profile</button></a>
+                             <a href="<?php echo base_url();?>login/update"><button class="btn btn-success"> Update Profile </button></a><br><br><br>
+                             <a href="<?php echo base_url();?>login/delete"><button class="btn btn-danger">Delete Account</button></a>
                         </div>
                         
                    </div>

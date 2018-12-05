@@ -1,11 +1,14 @@
 <?php
 class Pages extends CI_Controller {
  
+   private $check = 'undefined';
         public function index(){
            echo "default__function";
-        }
+           echo $this->check = 'test';
+         }
 
         public function view($page = 'home') {
+         echo $this->check;
           $path = 'views/pages/'.$page.'.php';
 
             if( ! file_exists(APPPATH.$path)) {

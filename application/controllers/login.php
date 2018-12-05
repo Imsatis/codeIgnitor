@@ -18,12 +18,15 @@ class login extends CI_Controller {
       if($this->input->post('logout')==='TRUE') {
 
         unset($_SESSION['user']);
+        session_destroy();
         
       }
     
      if(!isset($_SESSION['user'])) {
       $this->load->view('regis_login/loginView');
+      
      }else{
+      
       $this->load->view('regis_login/profileHeader');
       $this->load->view('regis_login/profileView');  
      }
@@ -45,11 +48,14 @@ class login extends CI_Controller {
           $this->load->view('regis_login/profileHeader');
           $this->load->view('regis_login/profileView');
         
-        }
-      }else{
-        //$this->load->view();
+          }else{
+    
+            $INCORRECT['wrong'] = '<span style="color:red">INCORRECT PASSWORD</span>';
+           // echo $INCORRECT; 
+            $this->load->view('regis_login/loginView',$INCORRECT);  
+         }
       }
-    }
+  }
 
     public function update($check = FALSE) {
       
@@ -58,18 +64,35 @@ class login extends CI_Controller {
         
         $this->loginModel->update_user();
         $_SESSION['user'] = $this->loginModel->selectbyid();
-      }
+        $this->load->view('regis_login/profileHeader');
+        $this->load->view('regis_login/profileView');
+        
+      }else{
 
       $this->load->view('regis_login/profileHeader');
       $this->load->view('regis_login/updateView');
-       
+    }       
+    
     }
     
     public function insert() {
-       $this->loginModel->insert_user();
+
+       if($this->loginModel->insert_user()) {
+        $SUCCESS['right'] = '<span style="color:green">Registered Successfully</span>';
+       
+         $this->load->view('regis_login/loginView',$SUCCESS);
+       }
     }
 
+    public function delete() {
+
+      if($this->loginModel->delete_user()) {
+        redirect('login');
+    }$path = base_url()."login";session_destroy();
+    redirect("$path");
+
   }
+}
 
 
 
