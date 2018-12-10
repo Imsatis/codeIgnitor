@@ -3,31 +3,41 @@
 <div class='form-group col-md-4' >
          
          <label for='username'>Username</label>
-         <input class='form-control' type='text' name='username' placeholder=''>
-          
-</div><?php echo form_error('username')?>
+         <input class='form-control' type='text' name='username' value="<?php echo set_value('username')?>">
+         <?php echo form_error('username')?>    
+</div>
 <div class='form-group col-md-4'>
          
          <label for='email'>Email</label>
-         <input class='form-control' type='text' name='email' placeholder=''> 
+         <input class='form-control' type='text' name='email' value="<?php echo set_value('email')?>"> 
+         <?php echo form_error('email')?>
 </div>
 <div class='form-group col-md-4'>
          
          <label for='Password'>Password</label>
-         <input class='form-control' type='password' name='password' placeholder=''> 
+         <input class='form-control' type='password' name='password' value="<?php echo set_value('password')?>">
+         <?php echo form_error('password')?> 
 </div>
 <div class='form-group col-md-4'>
          
-         <label for='Password'>Image</label>
-         <input class='form-control' type='file' name='image' placeholder=''> 
+         <label for='Image'>Image</label>
+         <input class='form-control' type='file' name='image' value="<?php echo set_value('image')?>"> 
+         <?php echo form_error('image')?> 
 </div>
      
 <div class='form-group  col-md-4'>    
 
-         <input type="submit" class="btn btn-success signUp" value="Sign Up"> 
+         <input type="submit" class="btn btn-success signUp" value="Sign Up">
+         <a href=''><button class="btn btn-default">Log in</button></a> 
+        
+</div>
+
+<div class='form-group  col-md-4'>
+
+         <?php echo $this->session->flashdata('register')?>
 
 </div>
 </form>
 
-<?php echo validation_errors();?>
+<?php //echo validation_errors();?>
 </div>
