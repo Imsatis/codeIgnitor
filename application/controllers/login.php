@@ -7,9 +7,9 @@ class login extends CI_Controller {
   public function __construct() {
        
     parent::__construct();
-    $this->load->library('session');
+    $this->load->library(array('session','form_validation'));
+    $this->load->helper(array('form','url'));
     $this->load->model('loginModel');
-    
     
  }
 
@@ -33,7 +33,9 @@ class login extends CI_Controller {
     }
 
     public function check() {
-      
+
+     
+
       if(!empty($this->input->post('username')) && !empty($this->input->post('username'))) {
           
         if($user = $this->loginModel->check_model()) {
@@ -77,12 +79,29 @@ class login extends CI_Controller {
     
     public function insert() {
 
+       /*FORM ----- VALIDATION*/
+      
+      //  $this->form_validation->set_rules('Iname','Name','required',array('required'=>'*required'));
+      //  $this->form_validation->set_rules('Iusername','Username','required');
+      //  $this->form_validation->set_rules('Iemail','Email','required');
+      //  $this->form_validation->set_rules('password','Password','required');
+      //  $this->form_validation->set_rules('Imobile','Mobile','required');
+      //  $this->form_validation->set_rules('Igender','Gender','required');
+       
+ 
+       /*FORM ----- VALIDATION*/
+ 
+      //  if($this->form_validation->run()) {
+
        if($this->loginModel->insert_user()) {
         $SUCCESS['right'] = '<span style="color:green">Registered Successfully</span>';
        
          $this->load->view('regis_login/loginView',$SUCCESS);
-       }
-    }
+        }
+      // }else{
+      //   $this->load->view('regis_login/loginView');
+      } 
+    
 
     public function delete() {
 
