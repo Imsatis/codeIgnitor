@@ -10,22 +10,37 @@
 </head>
 <body>
     
-    <?php echo form_open();?>
+    <?php echo form_open('Loginpanel/loginCheck');?>
     
     <div class='form-group col-md-4' >
          
          <label for='username'>Username</label>
-         <input class='form-control' type='text' name='username' value="<?php echo set_value('username')?>">
-         <?php echo form_error('username')?>    
+         <input class='form-control' type='text' name='user' value="<?php echo set_value('user')?>">
+         <?php echo form_error('user')?>    
 </div>
     
 <div class='form-group col-md-4'>
          
          <label for='Password'>Password</label>
-         <input class='form-control' type='password' name='password' value="<?php echo set_value('password')?>">
-         <?php echo form_error('password')?> 
+         <input class='form-control' type='password' name='userpass' value="<?php //echo set_value('userpass')?>">
+         <?php echo form_error('userpass')?> 
 </div>
 
-    </form>
+<div class='form-group  col-md-4'>    
+
+<input type="submit" class="btn btn-info " value="Log in">
+</form>
+<a href=<?php echo base_url().'Loginpanel/index/registrationView'?> class="btn btn-success">Sign Up</a> 
+
+  </div>
+
+</form>
+
+ <div class='form-group  col-md-4'>
+
+      <?php //echo form_error('pass')?>
+
+</div>
+
 </body>
 </html>

@@ -28,7 +28,8 @@
 <div class='form-group  col-md-4'>    
 
          <input type="submit" class="btn btn-success signUp" value="Sign Up">
-         <a href=''><button class="btn btn-default">Log in</button></a> 
+         </form>
+         <a href=<?php echo base_url().'Loginpanel'?> class="btn btn-info">Log in</a> 
         
 </div>
 
@@ -37,7 +38,7 @@
          <?php echo $this->session->flashdata('register')?>
 
 </div>
-</form>
+
 
 <?php //echo validation_errors();?>
 </div>

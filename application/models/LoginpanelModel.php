@@ -7,20 +7,29 @@ class LoginpanelModel extends CI_Model {
         $this->load->database();
     }
 
-    public function insert_user() {
+    public function check_model() {
+
+            $check = array (
+                'username'=> $this->input->post('user'),
+                'password'=> $this->input->post('userpass')
+            );
+        
+            $query = $this->db->get_where('logintask', $check);
+
+            return ($query->num_rows()>0) ? $query->result() : FALSE;
+    }
+
+    public function insert_user($file) {
             
+          
         $insertArray = array (
-
-           '_USERNAME'=>$this->input->post('Iusername'),
-           '_NAME'=>$this->input->post('Iname'),
-           '_EMAIL'=>$this->input->post('Iemail'),
-           '_MOBILE'=>$this->input->post('Imobile'),
-           '_GENDER'=>$this->input->post('Igender'),
-           '_PASSWORD'=>$this->input->post('Ipassword')
-        );
-
+            'username'=>$this->input->post('username'),
+            'email'=>$this->input->post('email'),
+            'password'=>$this->input->post('password'),
+            'image'=>'../uploads/'.$file['file_name']
+         );
        
-       return $this->db->insert('user', $insertArray);
+       return $this->db->insert('logintask', $insertArray);
 
        }
 
