@@ -19,6 +19,7 @@ class Loginpanel extends CI_Controller {
         if($this->session->userdata('user')!==NULL) {
         
             $method = 'welcomeAdmin';
+            //$data['head'] = '';
             
         }
 
@@ -91,7 +92,7 @@ class Loginpanel extends CI_Controller {
 
                 
                 $move = 'loginView';
-                //echo "test123";
+                
           }
 
                 $this->load->view('userValidation/header');
