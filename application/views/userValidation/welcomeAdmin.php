@@ -1,3 +1,11 @@
+<?php
+
+if($this->session->userdata('user')===NULL) {
+     
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +17,8 @@
 <body>
     
 <h1>Welcome <?php print_r($this->session->userdata('user')[0]->username);?></h1>
+
+<?php if(!empty($this->session->userdata('user')[0]->image)) echo img($this->session->userdata('user')[0]->image)?>
 
 <a href=<?php echo base_url().'Loginpanel/logout'?> class="btn btn-danger">Log out</a> 
 
