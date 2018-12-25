@@ -6,7 +6,7 @@ class Loginpanel extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->helper('form');
+        $this->load->helper(array('form','html'));
         $this->load->library(array('form_validation','session','upload'));
         $this->load->model('LoginpanelModel');
         $this->form_validation->set_error_delimiters('<div class="text-danger">','</div>');

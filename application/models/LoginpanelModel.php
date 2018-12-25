@@ -10,8 +10,8 @@ class LoginpanelModel extends CI_Model {
     public function check_model() {
 
             $check = array (
-                'username'=> $this->input->post('user'),
-                'password'=> $this->input->post('userpass')
+                'username'=> $this->security->xss_clean($this->input->post('user')),
+                'password'=> $this->security->xss_clean($this->input->post('userpass'))
             );
         
             $query = $this->db->get_where('logintask', $check);
@@ -23,10 +23,10 @@ class LoginpanelModel extends CI_Model {
             
           
         $insertArray = array (
-            'username'=>$this->input->post('username'),
-            'email'=>$this->input->post('email'),
-            'password'=>$this->input->post('password'),
-            'image'=>'../uploads/'.$file['file_name']
+            'username'=>$this->security->xss_clean($this->input->post('username')),
+            'email'=>$this->security->xss_clean($this->input->post('email')),
+            'password'=>$this->security->xss_clean($this->input->post('password')),
+            'image'=>$this->security->xss_clean('../uploads/'.$file['file_name'])
          );
        
        return $this->db->insert('logintask', $insertArray);
