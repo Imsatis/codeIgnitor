@@ -10,6 +10,7 @@ class Loginpanel extends CI_Controller {
         $this->load->library(array('form_validation','session','upload'));
         $this->load->model('LoginpanelModel');
         $this->form_validation->set_error_delimiters('<div class="text-danger">','</div>');
+        //setting Globally to all form validation error;
         
         
     }
@@ -22,7 +23,7 @@ class Loginpanel extends CI_Controller {
             //$data['head'] = '';
             
         }
-
+       // echo $method;
         $this->load->view('userValidation/header');
         $this->load->view('userValidation/'.$method);
         $this->load->view('userValidation/footer');
@@ -55,7 +56,7 @@ class Loginpanel extends CI_Controller {
         
         
         
-        if(!$this->form_validation->run()){
+        if(!$this->form_validation->run()) {
             
             
         }else{

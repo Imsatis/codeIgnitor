@@ -35,31 +35,37 @@
                 </tbody>
             
            </table>
-           <div id="insertData" style='display:none'>
+           <div id="insertData" style=''>
       
-           <form action="" class='' method="post">
+           <form  id='insertUser' method="post">
            <div class='form-group col-md-4'>
                 <label for="name">Name</label>
                     <input class='form-control' type="text" name='name'>
+                    <?php //echo form_error('username');?>
+                    <div id='error-name'></div> 
                 </div>  
             <div class="form-group col-md-4">
                 <label for="username">Username</label>
                     <input class='form-control' type="text" name='username'>
+                    <div id='error-username'></div>
                 </div>
             <div class="form-group col-md-4">
                 <label for="email">Email</label>
-                  <input class='form-control' type="email" name='email'>   
+                  <input class='form-control' type="email" name='email'>
+                  <div id='error-email'></div>   
                 </div>
             <div class="form-group col-md-4">    
                 <label for="mobile">Mobile</label>
                   <input class='form-control ' type="number" name='mobile'>
+                  <div id='error-mobile'></div>
                 </div>
             <div class="form-group col-md-4">          
                <label for="gender">Male</label>
                    <input type="radio"  name="gender" value="male">
                <label for="gender">Female</label>   
                    <input type="radio" name="gender" value="female">
-                   <button id='add' type='button' class='btn btn-success'>Add List</button>
+                   <div id='error-gender'></div>
+                   <button id='add' type='submit' class='btn btn-success'>Add List</button>
                 </div>
              
             </form>

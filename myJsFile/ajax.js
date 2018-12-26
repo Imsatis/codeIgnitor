@@ -4,11 +4,14 @@ $(document).ready(function () {
     $('#addlist').click(function() {
         $('#addlist').hide();
         $("#insertData").fadeIn(); 
-        console.log('hellow')
+        //console.log('hellow')
     });
 
-    $("#add").click(function(e) {
-    //e.preventDefault();
+    $("#insertUser").submit(function(event) {
+        event.preventDefault();
+        //console.log('test');
+   
+    
     let obj = { name:$("input[name=name]").val(),
                 username:$("input[name=username]").val(),
                 email:$("input[name=email]").val(),
@@ -19,10 +22,30 @@ $(document).ready(function () {
     $.post('http://localhost/codeignitor/index.php/crudAjax/insertData',
            {insertData:JSON.stringify(obj)},
            function(data) {
-               if(data) {
+               //console.log(data+'testing');
+               data = JSON.parse(data);
+               if(data.success) {
+                   
+                  //console.log(data.success);
+                   ///console.logr(form_error());
+               $('#insertUser')[0].reset();
                $("#insertData").fadeOut();
                showAll();
                $('#addlist').show();
+               }else {
+
+                   console.log('No data Found');
+                    let i=0;
+                    console.log(data);
+                   $.each(data,function(key,value) {
+                    $('#error-'+key)[0].html(value);
+                    console.log($('#error-'+key));
+                    console.log(i)
+                    // i++;
+                    
+                });
+
+                   
                }
            }
     );
