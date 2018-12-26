@@ -19,10 +19,11 @@ $(document).ready(function () {
                 gender:$("input[name=gender]").val()
            }
 
-    $.post('http://localhost/codeignitor/index.php/crudAjax/insertData',
-           {insertData:JSON.stringify(obj)},
+    $.post('http://localhost/codeignitor/index.php/crudAjax/validate',
+          $("#insertUser").serialize(),
+           //{insertData:JSON.stringify(obj)},
            function(data) {
-               //console.log(data+'testing');
+               //console.log(data);
                data = JSON.parse(data);
                if(data.success) {
                    
@@ -36,9 +37,9 @@ $(document).ready(function () {
 
                    console.log('No data Found');
                     let i=0;
-                    console.log(data);
+                    //$('#test').html('testing');
                    $.each(data,function(key,value) {
-                    $('#error-'+key)[0].html(value);
+                    $('#error-'+ key).html(value);
                     console.log($('#error-'+key));
                     console.log(i)
                     // i++;
