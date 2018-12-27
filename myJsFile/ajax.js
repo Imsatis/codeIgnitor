@@ -39,7 +39,7 @@ $(document).ready(function () {
                     console.log(data);
                    $.each(data,function(key,value) {
                     $('#error-'+key)[0].html(value);
-                    console.log($('#error-'+key));
+                    console.log($('#error-'+key)[0]);
                     console.log(i)
                     // i++;
                     
