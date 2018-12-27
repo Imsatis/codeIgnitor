@@ -32,7 +32,7 @@ class crudAjax extends CI_controller {
 
         
         $userData = json_decode($_REQUEST['insertData']);
-        $this->validate();
+        $this->validate($userData);
         // if($this->formModel->insertData($userData)) {
         //     echo true;
         // }
@@ -41,6 +41,8 @@ class crudAjax extends CI_controller {
 
    function validate() {
 
+    
+    //echo $_POST['name'];
     $this->form_validation->set_rules('name','Name','required');
     $this->form_validation->set_rules('username','Username','required');
     $this->form_validation->set_rules('email','Email','required');
@@ -57,6 +59,8 @@ class crudAjax extends CI_controller {
         
         //$this->load->view("ajaxForm/index.php");
 
+        //echo form_error('name').'<-';
+
         $error = array(
             'name'=>form_error('name'),
             'username'=>form_error('username'),
@@ -66,10 +70,14 @@ class crudAjax extends CI_controller {
             'success'=>false
         );
         print_r(json_encode($error));
+        // echo"<pre>";
+        // print_r($error);
 
    }
 
    }
+
+
 }
 
 ?>

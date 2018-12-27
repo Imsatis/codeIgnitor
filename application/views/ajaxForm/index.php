@@ -36,8 +36,8 @@
             
            </table>
            <div id="insertData" style=''>
-      
-           <form  id='insertUser' method="post">
+           <?php echo form_open('crudAjax/validate',array('id'=>'insertUser'));?>
+           <!-- <form  id='insertUser' method="post"> -->
            <div class='form-group col-md-4'>
                 <label for="name">Name</label>
                     <input class='form-control' type="text" name='name'>
