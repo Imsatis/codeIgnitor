@@ -43,6 +43,7 @@ class loginModel extends CI_Model {
         
         $this->db->where('_ID', $_SESSION['user'][0]->_ID);
         $this->db->update('user', $updateArray);
+        
         }
 
         public function insert_user() {
