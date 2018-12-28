@@ -1,4 +1,7 @@
 <?php
+//search
+//select * from validjson where json_search(json,'one','jhon') is not null
+
 
 class formModel extends CI_Model {
 
@@ -6,6 +9,12 @@ class formModel extends CI_Model {
 
        $this->load->database();
    
+    }
+
+    function readData() {
+        
+        $result = $this->db->get("validjson");
+         return ($result->num_rows()>0) ? $result->result_array() : False;
     }
 
 
@@ -16,6 +25,26 @@ class formModel extends CI_Model {
     return $this->db->query($test);
 
    }
+
+   function updateData($id,$update) {
+       $name = $update['name'][0];
+       $name1 = $update['name'][1];
+       $name2 = $update['name'][2];
+       $name3 = $update['name'][3];
+       $query = "UPDATE validjson SET json = JSON_REPLACE(json,'$.name[0]','$name','$.name[1]','$name1','$.name[2]','$name2','$.name[3]','$name3','$.username','$update[username]') where id = $id";
+       //print_r($update['name'][0]);
+       echo $query;
+       $this->db->query($query);
+   }
+
+   function selectbyid($id) {
+
+     $result = $this->db->get_where("validjson",array('id'=>$id));
+     return ($result->num_rows()>0) ? $result->row_array() : False;
+        
+}
+
+
 
    function searchData($search) {
    
@@ -61,9 +90,9 @@ class formModel extends CI_Model {
                     $row = $result->result_array();
                     print_r($row);
                     echo"hellow";
-
                 
-                }
+                
+                }//SELECT json_extract(json, '$.name') FROM validjson WHERE json_extract(json, '$.name') = 'jane'
                 // foreach($row[0] as $check) {
                 //     //if($row!=)
                 //    // print_r($check);
