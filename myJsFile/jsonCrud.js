@@ -32,7 +32,7 @@ $(document).ready(function() {
     $(document).on('click', '#edit', function(event) { 
 
 
-           console.log('edit');
+           
           $.post('JsonCrud/selectbyid',
           {id:event.target.value},
           function(data) {
@@ -84,25 +84,6 @@ $(document).ready(function() {
              $('#update').hide();
              showData();
          })
-     });
-
-
-     $(document).on('click', '#delete', function(event) {
-
-        event.preventDefault();
-        console.log(event);
-        
-        
-        $.post(
-            'JsonCrud/deletebyid/'+event.target.value,
-            {},
-            function (data) {
-                console.log(data);
-                $(event.target.parentNode.parentNode).fadeOut();
-                
-            }
-        );
-
      });
 
 
