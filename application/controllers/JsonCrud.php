@@ -67,6 +67,12 @@ class JsonCrud extends CI_controller {
         $search = $_REQUEST['search'];//
         $this->formModel->test($search);
        }
+
+       function deletebyid($id) {
+
+        $this->formModel->deletebyid($id);
+
+       }
 }
 
 

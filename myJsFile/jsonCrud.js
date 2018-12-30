@@ -19,7 +19,7 @@ $(document).ready(function() {
                     "<td>" + data.user[x].username + "</td>" +
                     "<td>" +
                     "<button id='edit' value='"+data.id[x]+"'>Edit</button>" +
-                    "<a href='rf' class='btn id='delete' value='"+data.id[x]+"'>Delete</a>" +
+                    "<button id='delete' value='"+data.id[x]+"'>Delete</button>" +
                     "</td>" +
                     "</tr>";
             }
@@ -32,7 +32,7 @@ $(document).ready(function() {
     $(document).on('click', '#edit', function(event) { 
 
 
-           
+           console.log('edit');
           $.post('JsonCrud/selectbyid',
           {id:event.target.value},
           function(data) {
@@ -61,9 +61,28 @@ $(document).ready(function() {
          function (data) {
              console.log(data);
              $('#update form')[0].reset();
-             $('#update form').hide();
+             $('#update').hide();
              showData();
          })
+     });
+
+
+     $(document).on('click', '#delete', function(event) {
+
+        event.preventDefault();
+        console.log(event);
+        
+        
+        $.post(
+            'JsonCrud/deletebyid/'+event.target.value,
+            {},
+            function (data) {
+                console.log(data);
+                $(event.target.parentNode.parentNode).fadeOut();
+                
+            }
+        );
+
      });
 
 
@@ -82,6 +101,7 @@ $(document).ready(function() {
        function(data) {
            if(data) {
             $('#form')[0].reset();
+            showData();
            }
        })
     });

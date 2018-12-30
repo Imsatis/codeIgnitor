@@ -42,7 +42,15 @@ class formModel extends CI_Model {
      $result = $this->db->get_where("validjson",array('id'=>$id));
      return ($result->num_rows()>0) ? $result->row_array() : False;
         
-}
+   }
+
+   function deletebyid($id) {
+
+    $query = "DELETE FROM `validjson` WHERE id = '$id'";
+    echo $id;
+    return $this->db->query($query);
+
+   }
 
 
 
