@@ -37,11 +37,18 @@ class formModel extends CI_Model {
        $this->db->query($query);
    }
 
+   function deletebyid($id) {
+    $query = "DELETE FROM `validjson` WHERE id = '$id' ";
+    return ($this->db->query($query)) ? TRUE : FALSE;
+
+   }
+
    function selectbyid($id) {
 
      $result = $this->db->get_where("validjson",array('id'=>$id));
      return ($result->num_rows()>0) ? $result->row_array() : False;
         
+<<<<<<< HEAD
    }
 
    function deletebyid($id) {
@@ -51,63 +58,69 @@ class formModel extends CI_Model {
     return $this->db->query($query);
 
    }
+=======
+}   
+>>>>>>> ad27a4bb9c087c53fe907b2011cb21aec71c4190
 
 
 
    function searchData($search) {
    
-        $query = "SELECT  JSON_SEARCH(json,'all','$search') FROM validjson ";
+        $query = "SELECT  * FROM validjson where JSON_SEARCH(json,'all','%$search%') is not null";
         $result = $this->db->query($query);
-        echo "hellow";
+        
         if ($result->num_rows()>0) {
 
-            while($row = $result->result()) {
-                print_r($row);echo "hellow";
-                // foreach($row as $value) {
-                //     if($value!="") {
-                //         $searchQuery = "SELECT JSON_VALUE(json,$value) FROM validjson where JSON_VALUE(json,$value) = '$search'";
-   
-                //         $data = $conn->query($searchQuery);
-                //         if($data->num_rows>0) {
-                //             while($row1 = $data->fetch_assoc()) {
-                //                 foreach($row1 as $item) {
-                //                     echo $item.'<br>';
-                //                    }
-                //                 }
-                //             }
-                //         }
-                //     }
+
+         foreach($result->result() as $data) {
+
+                    $chk = json_decode($data->json);
+                    // echo "<pre>";
+                    // print_r(json_decode($data->json));
+
+               foreach(json_decode($data->json)->name as $searchName) {
+
+                //if($str = stristr($search,substr($searchName,0,strlen($search)))) {
+
+                    if($searchName == $search) {
+                     echo $searchName."<br>";
+                    }
                 }
             }
-        }
 
+        }else {
 
-        function test($search) {
-           
-            $query = "SELECT  JSON_SEARCH(json,'all','$search') FROM validjson ";
-            $result = $this->db->query($query);
-            // echo"hellow";
-            if ($result->num_rows()>0) {
-                 echo "<pre>";
-                // print_r($result);
-                
-                
-                // print_r($result->num_rows());
-                for($i=0;$i<$result->num_rows();$i++) {
-
-                    $row = $result->result_array();
-                    print_r($row);
-                    echo"hellow";
-                
-                
-                }//SELECT json_extract(json, '$.name') FROM validjson WHERE json_extract(json, '$.name') = 'jane'
-                // foreach($row[0] as $check) {
-                //     //if($row!=)
-                //    // print_r($check);
-                // }
-                
+                echo "Sorry No Data Found in Database";
             }
         }
+
+
+        // function test($search) {
+           
+        //     $query = "SELECT  JSON_SEARCH(json,'all','$search') FROM validjson ";
+        //     $result = $this->db->query($query);
+        //     // echo"hellow";
+        //     if ($result->num_rows()>0) {
+        //          echo "<pre>";
+        //         // print_r($result);
+                
+                
+        //         // print_r($result->num_rows());
+        //         for($i=0;$i<$result->num_rows();$i++) {
+
+        //             $row = $result->result_array();
+        //             print_r($row);
+        //             echo"hellow";
+                
+                
+        //         }//SELECT json_extract(json, '$.name') FROM validjson WHERE json_extract(json, '$.name') = 'jane'
+        //         // foreach($row[0] as $check) {
+        //         //     //if($row!=)
+        //         //    // print_r($check);
+        //         // }
+                
+        //     }
+        // }
 
 
     }
@@ -122,22 +135,22 @@ class formModel extends CI_Model {
 
 
 
-    // function showAll() {
+    function showAll() {
        
-    //   $result = $this->db->get("user");
-    //   return ($result->num_rows()>0) ? $result->result() : FALSE;
+      $result = $this->db->get("user");
+      return ($result->num_rows()>0) ? $result->result() : FALSE;
        
-    // }
+    }
 
-    // function insertData($userData) {
-    //     $array = array(
-    //         '_NAME'=>$userData->name,
-    //         '_USERNAME'=>$userData->username,
-    //         '_EMAIL'=>$userData->email,
-    //         '_Mobile'=>$userData->mobile,
-    //         '_GENDER'=>$userData->gender
-    //     );
-    //     return $this->db->insert('user',$array);
-    // }
+    function insertData($userData) {
+        $array = array(
+            '_NAME'=>$userData->name,
+            '_USERNAME'=>$userData->username,
+            '_EMAIL'=>$userData->email,
+            '_Mobile'=>$userData->mobile,
+            '_GENDER'=>$userData->gender
+        );
+        return $this->db->insert('user',$array);
+    }
 
 ?>

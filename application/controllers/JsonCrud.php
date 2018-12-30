@@ -1,20 +1,20 @@
 <?php
 
-class JsonCrud extends CI_controller {
+class jsonCrud extends CI_controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->model("ajaxForm/formModel");
+        $this->load->model("jsonCrudModel/jsonModel");
     }
 
     function index() {
-
+        //echo "hellow";
         $this->load->view('jsonCrud/jsonView.html');
     }
 
     function readData() {
        // echo "<pre>";
-        $data = $this->formModel->readData();
+        $data = $this->jsonModel->readData();
         $id = [];
         $arr=[];
         foreach($data as $value) {
@@ -29,9 +29,10 @@ class JsonCrud extends CI_controller {
         
 
     }
+
     function selectbyid() {
        $id = $_REQUEST['id'];
-       $data = $this->formModel->selectbyid($id);
+       $data = $this->jsonModel->selectbyid($id);
        print_r($data['json']);
        
     }
@@ -46,7 +47,7 @@ class JsonCrud extends CI_controller {
             
         );
       //print_r($jsonData);
-        $this->formModel->updateData($id,$jsonData);
+        $this->jsonModel->updateData($id,$jsonData);
     }
 
     function insert() {
@@ -58,14 +59,22 @@ class JsonCrud extends CI_controller {
             
         ));
 
-        echo $this->formModel->insert($jsonData);
+        echo $this->jsonModel->insert($jsonData);
         
+    }
+
+
+    function deletebyid($id) {
+        
+       echo $this->jsonModel->deletebyid($id);
+
     }
 
     function searchData() {
         //echo "hellow";
         $search = $_REQUEST['search'];//
-        $this->formModel->test($search);
+        //echo $search;
+        $this->jsonModel->searchData($search);
        }
 
        function deletebyid($id) {

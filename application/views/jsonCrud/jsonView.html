@@ -9,7 +9,10 @@
     <title>Document</title>
     </head>
     <body>
-        <h1>Json Data Interchange</h1>
+
+        <h1 styel="text-align: center">Json Data Interchange</h1>
+
+        <div style="margin-top:20px">
     
         <form action="" method="post" id='form'>
         <label for="name">Name</label>
@@ -27,16 +30,10 @@
         <input type="submit" name='submit'>
     
         </form>
-        <div id='search' style="margin-top:20px; ">
-    
-    
-        <form method='post' id='fetch'>
-        Search:<input type="text" name='search'>
-        <input type="submit" name=''>   
-        </form>
-        </div>
+    </div>
+        
 
-        <table class='table table-bordered'>
+        <table class='table table-bordered' style="margin-top:20px">
 
             <thead>
                 <tr>
@@ -69,7 +66,23 @@
 
         </div>
 
+        <!-- <button id='chk'>1</button>
+        <button id='chk'>2</button>
+        <button id='chk'>3</button> -->
 
+<div id='search' style="margin-top:20px; ">
+    
+    
+        <form method='post' id='fetch' autocomplete="off">
+        Search:<input type="text" name='search' placeholder="Enter Name">
+        <!-- <input type="submit" name='' value='search'>    -->
+        </form>
+        </div>
+
+        <div id="show">
+
+            
+        </div>
 
 
     <script src='http://localhost/codeignitor/myJsFile/jsonCrud.js'></script>

@@ -1,0 +1,17 @@
+Thinks To Remember...
+
+-> Id Must be unique.
+
+-> jQuery stops Traversing the DOM once its hit the ID of the Element you are looking for.
+
+Ex: if you select Id in jQuery with $('#'+event.target.id) you'll get the ID and jQuery starts Traversing in DOM, and if 
+    you have multiple ID's with same name jQuery only selects the first id and return it.
+    
+    With multiple ID's and if you want to Perform some task in that particular Element which clicked, then in alternate way you can select that
+    particular Element by event.target and perform some opreation on it, we can play with that Element because we are selecting
+    only that Element in which event is occur,Above we are selecting the ID in which event occur that's we have to face that type
+    of problem.   
+
+
+    Aj dekh leta hu khud ko bhii ki kitma dam h 
+        
