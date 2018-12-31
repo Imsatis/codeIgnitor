@@ -29,6 +29,7 @@ class JsonCrud extends CI_controller {
         
 
     }
+
     function selectbyid() {
        $id = $_REQUEST['id'];
        $data = $this->formModel->selectbyid($id);
@@ -62,10 +63,18 @@ class JsonCrud extends CI_controller {
         
     }
 
+
+    function deletebyid($id) {
+        
+       echo $this->formModel->deletebyid($id);
+
+    }
+
     function searchData() {
         //echo "hellow";
         $search = $_REQUEST['search'];//
-        $this->formModel->test($search);
+        //echo $search;
+        $this->formModel->searchData($search);
        }
 }
 

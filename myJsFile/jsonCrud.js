@@ -19,7 +19,7 @@ $(document).ready(function() {
                     "<td>" + data.user[x].username + "</td>" +
                     "<td>" +
                     "<button id='edit' value='"+data.id[x]+"'>Edit</button>" +
-                    "<a href='rf' class='btn id='delete' value='"+data.id[x]+"'>Delete</a>" +
+                    "<button id='delete' value='"+data.id[x]+"'>Delete</button>" +
                     "</td>" +
                     "</tr>";
             }
@@ -52,6 +52,26 @@ $(document).ready(function() {
           );
      });
 
+     $(document).on('click','#delete',function(event) {
+
+        $.post('JsonCrud/deletebyid/'+event.target.value,
+        {},
+        function(data) {
+
+             if(data) {
+
+                // In this we are selecting that particular event in which event is occur and then we are selecting parent of parent to hide the whole row;
+                 $(event.target).parent().parent().fadeOut('slow');
+                
+                // In this we are selecting Element from its id and jQuery selects the first Id in multiple ID's and return it,and thats why it hiding only the first id in the stack. 
+                // $('#'+event.target.id).parent().parent().fadeOut('slow');
+
+             }
+
+        });
+
+     });
+
      $('#update form').submit(function(event) {
          event.preventDefault();
          //console.log($('#update form').serialize())
@@ -61,7 +81,7 @@ $(document).ready(function() {
          function (data) {
              console.log(data);
              $('#update form')[0].reset();
-             $('#update form').hide();
+             $('#update').hide();
              showData();
          })
      });
@@ -73,6 +93,11 @@ $(document).ready(function() {
     //     console.log('hi');
         
     // });
+
+     $(document).on('click','#chk',function(event) {
+       // $('#chk').click(function (event) {
+        console.log($('#'+event.target.id).html());
+    });
 
 
     $('#form').submit(function(event) {
@@ -86,17 +111,24 @@ $(document).ready(function() {
        })
     });
 
-    $('#fetch').submit(function(event) {//
+    $('#fetch').keyup(function(event) {
+        
         event.preventDefault();
         $.post('JsonCrud/searchData',
         $('#fetch').serialize(),
         function(data) {
-            //console.log(data);
+            console.log(data);
            
             $('#show').html(data);
-        }
-        )
+        });
 
     });
 
+    $('#fetch').submit(function(event) {
+        console.log('chk');
+        event.preventDefault();
+    });
+
 });
+
+//Active resource loading counts reached a per-frame limit while the tab was in background. Network requests will be delayed until a previous loading finishes, or the tab is brought to the foreground. See https://www.chromestatus.com/feature/5527160148197376 for more details
