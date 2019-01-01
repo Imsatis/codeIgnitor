@@ -11,3 +11,7 @@ Ex: if you select Id in jQuery with $('#'+event.target.id) you'll get the ID and
     particular Element by event.target and perform some opreation on it, we can play with that Element because we are selecting
     only that Element in which event is occur,Above we are selecting the ID in which event occur that's we have to face that type
     of problem.   
+
+
+    Aj dekh leta hu khud ko bhii ki kitma dam h 
+        

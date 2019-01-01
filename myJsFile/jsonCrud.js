@@ -38,7 +38,7 @@ $(document).ready(function() {
           function(data) {
               data = JSON.parse(data);
               //console.log(data)
-              $('#update').show();
+              $('#update').fadeIn();
               for(let i=0;i<$('#update form')[0].length-1;i++) {
                 if($('#update form')[0][i].name !== 'username') {
                 $('#update form')[0][i].value = data.name[i];
@@ -107,6 +107,7 @@ $(document).ready(function() {
        function(data) {
            if(data) {
             $('#form')[0].reset();
+            showData();
            }
        })
     });
